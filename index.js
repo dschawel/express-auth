@@ -16,6 +16,11 @@ app.get('/', (req, res) => {
     res.render('Home')
 })
 
+// error always goes on bottom
+app.get('*', (req, res) => {
+    res.render('error404')
+}) 
+
 app.listen(3000, () => {
     console.log('Good morning!')
 }) 
