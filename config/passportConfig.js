@@ -70,7 +70,20 @@ passport.use(new GithubStrategy({
         }
     })
     .then(([user, wasCreated]) => {
-        return cb(null, user)
+        // Find out if user was already a github user. If so, they need a new token
+        if (!wasCreated && user.githubId) {
+            user.update({
+                githubToken: accessToken
+            })
+            .then(updatedUser => {
+                cb(null, updatedUser)
+            })
+            .catch()
+        }
+        else {
+            // Newly created user or, not a pervious GH user
+            return cb(null, user)
+        }
     })
     .catch(cb)
 }))
