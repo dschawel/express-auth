@@ -58,6 +58,14 @@ This is some boilerplate code for projects. This is a bare bones node/express ap
 git clone <repo_link> <new_name>
 ```
 
+#### EXTRA STEP
+
+Switch to the `with-oauth` branch!
+
+````
+git checkout with-oauth
+````
+
 #### 2. Install node modules from package.json
 
 ````
